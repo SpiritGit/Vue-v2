@@ -20,11 +20,23 @@ module.exports = {
                     {
                         loader:'url-loader',
                         options:{
-                            limit:8192
-                        }
+                            limit:8192,
+                            name:'img/[name].[hash:8].[ext]' //生成规范命名而不是32位hash值
+                        },
                     }
                 ]
+            },
+            {
+                test:/\.m?ls$/,
+                exclude:/(node_modules|bower_components)/,
+                use:{
+                    loader:'babel-loader',
+                    options:{
+                        presents:['es2015']
+                    }
+                }
             }
+
         ]
     }
 }
